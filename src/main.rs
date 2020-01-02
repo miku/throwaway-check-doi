@@ -3,16 +3,15 @@ extern crate lazy_static;
 #[macro_use]
 extern crate failure;
 
-pub use failure::Error;
-
+use failure::Error;
 use regex::Regex;
 use std::result;
 
-/// A type alias for handling errors throughout this crate
-pub type Result<T> = result::Result<T, Error>;
+/// Result is a a type alias for handling errors (throughout this crate).
+type Result<T> = result::Result<T, Error>;
 
 /// check_doi validates a DOI.
-pub fn check_doi(raw: &str) -> Result<()> {
+fn check_doi(raw: &str) -> Result<()> {
     lazy_static! {
         static ref RE: Regex = Regex::new(r"^10.\d{3,6}/\S+$").unwrap();
     }
