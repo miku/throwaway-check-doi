@@ -45,7 +45,7 @@ fn main() {
     for v in &vec {
         let _ = match check_doi(v) {
             Ok(_) => println!("{} => ok", *v),
-            Err(_) => println!("{} => fail", *v),
+            Err(e) => println!("{} => fail, {}", *v, e),
         };
     }
 }
